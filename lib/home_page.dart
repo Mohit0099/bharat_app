@@ -113,19 +113,25 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 height: 5.h,
                                 width: 75.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       bottomLeft: Radius.circular(10),
                                     )),
+                                child: const Center(
+                                  child: Text(
+                                    "What skill you are looking to improve?",
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
                               ),
                               Container(
                                 height: 5.h,
                                 width: 13.w,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.grey,
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(10),
                                       bottomRight: Radius.circular(10),
                                     )),
@@ -163,92 +169,54 @@ class _HomePageState extends State<HomePage> {
                               })),
                         ),
                         Container(
-                          padding: EdgeInsets.only(
-                            top: 50.h,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 10.h,
-                                    width: 20.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink,
-                                      borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            NetworkConstant.Image_URL +
-                                                featuredCategories[0].image),
-                                        fit: BoxFit.cover,
+                          height: 20.h,
+                          margin: EdgeInsets.only(top: 50.h, left: 20),
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemCount: featuredCategories.length,
+                              itemBuilder: ((context, index) {
+                                return Container(
+                                  height: 10.h,
+                                  width: 30.w,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            height: 10.h,
+                                            width: 20.w,
+                                            decoration: BoxDecoration(
+                                              color: Colors.pink,
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    NetworkConstant.Image_URL +
+                                                        featuredCategories[
+                                                                index]
+                                                            .image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            featuredCategories[index]
+                                                .name
+                                                .toString(),
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  1.h.heightBox,
-                                  Text(
-                                    featuredCategories[0].name.toString(),
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 10.h,
-                                    width: 20.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink,
-                                      borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            NetworkConstant.Image_URL +
-                                                featuredCategories[1].image),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  1.h.heightBox,
-                                  Text(
-                                    featuredCategories[1].name.toString(),
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 10.h,
-                                    width: 20.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.pink,
-                                      borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            NetworkConstant.Image_URL +
-                                                featuredCategories[2].image),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  1.h.heightBox,
-                                  Text(
-                                    featuredCategories[2].name.toString(),
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                );
+                              })),
                         ),
                         Container(
                           padding: EdgeInsets.only(
@@ -267,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                               EdgeInsets.only(top: 70.h, left: 20, right: 20),
                           child: GridView.builder(
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 15,
                                 mainAxisSpacing: 15,
@@ -285,19 +253,28 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        height: 10.h,
-                                        width: 27.w,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(NetworkConstant
-                                                    .Image_URL +
-                                                featuredCourses[index].image),
-                                            fit: BoxFit.fill,
+                                          height: 9.h,
+                                          width: 27.w,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            // image: DecorationImage(
+                                            //   image: NetworkImage(NetworkConstant
+                                            //           .Image_URL +
+                                            //       featuredCourses[index].image),
+                                            //   fit: BoxFit.fill,
+                                            // ),
                                           ),
-                                        ),
-                                      ),
+                                          child: Image.network(
+                                            NetworkConstant.Image_URL +
+                                                featuredCourses[index].image,
+                                            errorBuilder: (BuildContext context,
+                                                Object exception,
+                                                StackTrace? stackTrace) {
+                                              return const Center(
+                                                  child: Text('😢'));
+                                            },
+                                          )),
                                       1.h.heightBox,
                                       Text(
                                         featuredCourses[index].level,
@@ -330,7 +307,7 @@ class _HomePageState extends State<HomePage> {
                               EdgeInsets.only(top: 107.h, left: 20, right: 20),
                           child: GridView.builder(
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 15,
                                 mainAxisSpacing: 15,
@@ -348,19 +325,43 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        height: 10.h,
-                                        width: 27.w,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(NetworkConstant
-                                                    .Image_URL +
-                                                popularCourses[index].image),
-                                            fit: BoxFit.fill,
+                                          height: 9.h,
+                                          width: 27.w,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            // image: DecorationImage(
+                                            //   image: NetworkImage(
+                                            //       NetworkConstant.Image_URL +
+                                            //           popularCourses[index]
+                                            //               .image),
+                                            //   fit: BoxFit.fill,
+                                            // ),
                                           ),
-                                        ),
-                                      ),
+                                          child: Image.network(
+                                            NetworkConstant.Image_URL +
+                                                popularCourses[index].image,
+                                            errorBuilder: (BuildContext context,
+                                                Object exception,
+                                                StackTrace? stackTrace) {
+                                              return const Center(
+                                                  child: const Text('😢'));
+                                            },
+                                          )
+                                          // child: FadeInImage(
+                                          //   image: NetworkImage(
+                                          //     NetworkConstant.Image_URL +
+                                          //         featuredCourses[index].image,
+                                          //   ),
+                                          //   placeholder: AssetImage(""),
+                                          //   imageErrorBuilder:
+                                          //       (context, error, stackTrace) {
+                                          //     return Center(
+                                          //         child: Text("No Image"));
+                                          //   },
+                                          //   fit: BoxFit.fitWidth,
+                                          // ),
+                                          ),
                                       1.h.heightBox,
                                       Container(
                                         height: 2.h,
